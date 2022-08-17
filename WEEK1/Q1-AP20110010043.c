@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() 
+int main()
 {
     // Write C code here
     int state = 0;
@@ -75,14 +75,14 @@ int main()
         else
         {
             printf("please enter a valid string with a and b only\n");
-            state = n+1;
+            state = -1;
             break;
         }
         y++;
     }
-    if(state == n+1)
+    if(state == -1)
     {
-        printf("Please run the program once again Thank You");
+        return;
     }
     else
     {
@@ -95,6 +95,6 @@ int main()
             printf("Sorry string not accepted\n");
         }
     }
-    
+
     return 0;
 }
