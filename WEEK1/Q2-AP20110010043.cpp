@@ -1,20 +1,23 @@
-#include <stdio.h>
+
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
 
 int main()
 {
-    // Write C code here
     int state = 0;
     int n;
-    printf("Enter the size of the input string\n");
-    scanf("%d",&n);
-    char aa[n];
-    printf("Enter the string with a and b only\n");
-    scanf("%s",&aa);
-    int y=0;
-    while(y != n)
+    cout<<"Enter the size of input"<<endl;
+    cin>>n;
+    char arr[n];
+    cout<<"Enter the string with a and b only"<<endl;
+    cin>>arr;
+    int y = 0;
+    while(y!=n)
     {
-        char var = aa[y];
-        if(var == 'a' || var == 'b')
+        char var = arr[y];
+        if(var == 'a' || var =='b')
         {
             switch(state)
             {
@@ -26,15 +29,16 @@ int main()
                     }
                     else
                     {
-                        state = 3;
+                        state = 2;
                     }
                     break;
                 }
+                
                 case 1:
                 {
                     if(var == 'a')
                     {
-                        state = 0;
+                        state = 3;
                     }
                     else
                     {
@@ -42,7 +46,21 @@ int main()
                     }
                     break;
                 }
+                
                 case 2:
+                {
+                    if(var == 'a')
+                    {
+                        state = 1;
+                    }
+                    else
+                    {
+                        state = 4;
+                    }
+                    break;
+                }
+                
+                case 3:
                 {
                     if(var == 'a')
                     {
@@ -50,51 +68,53 @@ int main()
                     }
                     else
                     {
-                        state = 1;
+                        state = 2;
                     }
                     break;
                 }
-                case 3:
+                
+                case 4:
                 {
                     if(var == 'a')
                     {
-                        state = 2;
+                        state = 1;
                     }
                     else
                     {
-                        state = 0;
+                        state = 4;
                     }
                     break;
                 }
+                
                 default:
                 {
-                    printf("The string cannot be determined\n");
+                    cout<<"The string cannot be determined"<<endl;
                 }
             }
         }
         else
         {
-            printf("please enter a valid string with a and b only\n");
+            cout<<"please enter a valid string with a and b only"<<endl;
             state = -1;
             break;
         }
         y++;
     }
+    
     if(state == -1)
     {
-        return;
+        return 0;
     }
     else
     {
-        if(state == 0)
+        if(state == 3 || state == 4)
         {
-            printf("Congrats your string accepted\n");
+            cout<<"Congrats your string accepted"<<endl;
         }
         else
         {
-            printf("Sorry string not accepted\n");
+            cout<<"Sorry string not accepted"<<endl;
         }
     }
-
     return 0;
 }
